@@ -10,6 +10,5 @@ class CreateUser with _$CreateUser {
 
   const factory CreateUser.successful(User user) = CreateUserSuccessful;
 
-  const factory CreateUser.error(Object error, StackTrace stackTrace) =
-      CreateUserError;
+  const factory CreateUser.error(Object error, StackTrace stackTrace) = CreateUserError;
 }

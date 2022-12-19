@@ -17,39 +17,31 @@ class AuthEpic {
     ]);
   }
 
-  Stream<dynamic> _loginUser(
-      Stream<LoginStart> actions, EpicStore<AppState> store) {
+  Stream<dynamic> _loginUser(Stream<LoginStart> actions, EpicStore<AppState> store) {
     return actions.flatMap((LoginStart startAction) {
       return Stream<void>.value(null)
-          .asyncMap((_) => _authApi.login(
-              email: startAction.email, password: startAction.password))
+          .asyncMap((_) => _authApi.login(email: startAction.email, password: startAction.password))
           .map((User user) => Login.successful(user))
-          .onErrorReturnWith((Object error, StackTrace stackTrace) =>
-              Login.error(error, stackTrace))
+          .onErrorReturnWith((Object error, StackTrace stackTrace) => Login.error(error, stackTrace))
           .doOnData(startAction.response);
     });
   }
 
-  Stream<dynamic> _logoutUser(
-      Stream<LogoutStart> actions, EpicStore<AppState> store) {
+  Stream<dynamic> _logoutUser(Stream<LogoutStart> actions, EpicStore<AppState> store) {
     return actions.flatMap((LogoutStart startAction) {
       return Stream<void>.value(null)
           .asyncMap((_) => _authApi.logout())
           .map((_) => const Logout.successful())
-          .onErrorReturnWith((Object error, StackTrace stackTrace) =>
-              Logout.error(error, stackTrace));
+          .onErrorReturnWith((Object error, StackTrace stackTrace) => Logout.error(error, stackTrace));
     });
   }
 
-  Stream<dynamic> _createUser(
-      Stream<CreateUserStart> actions, EpicStore<AppState> store) {
+  Stream<dynamic> _createUser(Stream<CreateUserStart> actions, EpicStore<AppState> store) {
     return actions.flatMap((CreateUserStart startAction) {
       return Stream<void>.value(null)
-          .asyncMap((_) => _authApi.createUser(
-              email: startAction.email, password: startAction.password))
+          .asyncMap((_) => _authApi.createUser(email: startAction.email, password: startAction.password))
           .map((User user) => CreateUser.successful(user))
-          .onErrorReturnWith((Object error, StackTrace stackTrace) =>
-              CreateUser.error(error, stackTrace))
+          .onErrorReturnWith((Object error, StackTrace stackTrace) => CreateUser.error(error, stackTrace))
           .doOnData(startAction.action);
     });
   }

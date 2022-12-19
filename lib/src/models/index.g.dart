@@ -7,24 +7,19 @@ part of models;
 // **************************************************************************
 
 _$AppState$ _$$AppState$FromJson(Map<String, dynamic> json) => _$AppState$(
-      authState: json['authState'] == null
-          ? const AuthState()
-          : AuthState.fromJson(json['authState'] as Map<String, dynamic>),
+      authState:
+          json['authState'] == null ? const AuthState() : AuthState.fromJson(json['authState'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$AppState$ToJson(_$AppState$ instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$AppState$ToJson(_$AppState$ instance) => <String, dynamic>{
       'authState': instance.authState,
     };
 
 _$AuthState$ _$$AuthState$FromJson(Map<String, dynamic> json) => _$AuthState$(
-      user: json['user'] == null
-          ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+      user: json['user'] == null ? null : User.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$AuthState$ToJson(_$AuthState$ instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$AuthState$ToJson(_$AuthState$ instance) => <String, dynamic>{
       'user': instance.user,
     };
 

@@ -19,15 +19,13 @@ class _LoginPageState extends State<LoginPage> {
     if (action is LoginError) {
       final Object error = action.error;
       if (error is FirebaseAuthException) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(error.message ?? error.code)));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.message ?? error.code)));
       }
     }
     if (action is CreateUserError) {
       final Object error = action.error;
       if (error is FirebaseAuthException) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(error.message ?? error.code)));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.message ?? error.code)));
       }
     }
   }
@@ -87,8 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                                   password: _passwordController.text,
                                   response: _onResponse,
                                 );
-                                StoreProvider.of<AppState>(context)
-                                    .dispatch(loginAction);
+                                StoreProvider.of<AppState>(context).dispatch(loginAction);
                               } else {
                                 return;
                               }
@@ -108,8 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                                   password: _passwordController.text,
                                   action: _onResponse,
                                 );
-                                StoreProvider.of<AppState>(context)
-                                    .dispatch(createUserAction);
+                                StoreProvider.of<AppState>(context).dispatch(createUserAction);
                               } else {
                                 return;
                               }

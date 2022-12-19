@@ -9,6 +9,5 @@ class User with _$User {
     String? imageUrl,
   }) = User$;
 
-  factory User.fromJson(Map<dynamic, dynamic> json) =>
-      _$UserFromJson(Map<String, dynamic>.from(json));
+  factory User.fromJson(Map<dynamic, dynamic> json) => _$UserFromJson(Map<String, dynamic>.from(json));
 }
